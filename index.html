@@ -2,171 +2,83 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Kamisama Ni Natta Hi Fan Page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<title>HHNiOS - Dịch Vụ IPA</title>
 <style>
-  /* Fix keo len, keo xuong */
-  html,
-  body {
-    overflow: auto;
-    height: 100%;
-  }
-/* Fix keo len, keo xuong */
-
+  /* Global Styles */
   body {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /*min-height: 50vh;*/
-    min-height: 100vh;
-    transition: background-color 0.5s;
+    font-family: Arial, sans-serif;
+    background-image: url('https://images2.alphacoders.com/104/1041566.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #000;
   }
-
-  .container {
-    text-align: center;
-    color: #fff;
-    padding: 20px;
-    max-width: 95%;
-    box-sizing: border-box;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
+  html,
+  body {
+   
+    overflow: auto;
+    height: 100%;
   }
-
-  .texth2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #ff6b6b;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-
-  .texth1hhnios {
-    font-size: 35px;
-    margin-bottom: -25px;
-    color: #ff6b6b;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.404);
-  }
-
-  .description {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: #ccc;
-    line-height: 1.5;
-  }
-
-  .buttons-container {
-    margin-top: 20px;
-  }
-
-  .button {
-    background-color: #ff6b6b;
-    border: none;
-    padding: 8px 16px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-  }
-
-  .button:hover {
-    background-color: #e85555;
-  }
-
-  .icon-container {
-    margin-top: 20px;
-  }
-
-  .icon-container a {
-    display: inline-block;
-    margin: 0 10px;
-    color: #ff6b6b;
-    text-decoration: none;
-    font-size: 24px;
-    transition: color 0.3s ease;
-  }
-
-  .icon-container a:hover {
-    color: #e85555;
-  }
-
-  /* Thêm phần mới cho phong cách anime */
   .background-image {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://images5.alphacoders.com/131/1311994.jpeg');
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*width: 100vw;*/
+    height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     z-index: -1;
     opacity: 0.8;
-  }        
-
-  .container {
-    background-color: rgba(0, 0, 0, 0.514);
-    border-radius: 10px;
-    padding: 40px;
-    box-shadow: 0px 0px 10px rgb(0, 0, 0);
-    position: relative; /* Thêm dòng này để cho position: absolute; hoạt động */
+    transition: opacity 0.5s ease;
   }
 
-  
-
-  .description {
-    font-size: 20px;
-    margin-bottom: 30px;
-    color: #ccc;
-    line-height: 1.6;
+  /* Container Styles */
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 100%;
   }
 
+  /* Button Styles */
   .button {
-    background-color: #ff6b6b;
-    color: white;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 8px;
+    background-color: #007bff85;
     border: none;
+    padding: 10px 20px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
     cursor: pointer;
+    border-radius: 5px;
     transition: background-color 0.3s ease;
   }
 
   .button:hover {
-    background-color: #e85555;
+    background-color: #007bff;
   }
 
-  .icon-container a {
-    color: #ff6b6b;
-    font-size: 28px;
-    margin: 0 15px;
-    transition: color 0.3s ease;
-  }
-
-  .icon-container a:hover {
-    color: #e85555;
-  }
-
+  /* Tab Styles */
   .tab-button {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #ff6b6bb4;
-    color: #fff;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #0059ffc9;
+    color: rgb(243, 243, 243);
     border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 8px 15px;
+    border-radius: 5px;
     cursor: pointer;
     opacity: 0.8;
     transition: opacity 0.3s ease;
-    z-index: 1;
   }
 
   .tab-button:hover {
@@ -174,6 +86,7 @@
   }
 
   .tab-content {
+    font-size: 16px;
     position: fixed;
     top: 0;
     right: 0;
@@ -199,120 +112,190 @@
     color: white;
     text-decoration: none;
     margin-bottom: 20px;
-    font-size: 16px;
   }
 
   .tab-close {
     position: absolute;
     top: 30px;
     right: 30px;
-    font-size: 24px;
+    font-size: 20px;
     color: white;
     cursor: pointer;
   }
 
-  /* Thêm phần này để tab-content không che phủ nút tab-button */
-  .tab-button:focus + .tab-content {
-    transform: scale(1);
+  /* Text Content Styles */
+  .text-content {
+    background-color: rgba(255, 255, 255, 0.384);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 0;
+    text-align: center;
   }
 
-
-  #customAudio {
-    width: 100%; /* Điều chỉnh kích thước theo ý muốn */
-    max-width: 500px; /* Kích thước tối đa */
+  .text-content h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #007aff;
   }
 
-  .background-image {
-    position: fixed;
-    top: 0;
-    left: 0;
+  .text-content h3 {
+    font-size: 24px;
+    color: #00e1ff;
+    margin-top: 20px;
+  }
+
+  .text-content p {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  /* Main Button Styles */
+  .main-button {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .main-button:hover {
+    background-color: #007bff8e;
+  }
+
+  /* Scrollable Content */
+  .scrollable-content {
+    overflow-y: auto;
+    max-height: calc(100vh - 120px);
     width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: -1;
-    opacity: 0.8;
-    transition: opacity 0.5s ease;
+    margin-top: 20px;
   }
 
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 26px;
+      color: rgb(255, 255, 255);
+    }
+
+    h2 {
+      font-size: 22px;
+      color: rgb(255, 255, 255);
+    }
+
+    p {
+      font-size: 18px;
+      color: rgb(255, 255, 255);
+    }
+  }
+
+  /* Rest of your existing styles */
   .color-tab {
-    background-color: #ff6b6b;
+    background-color: #007aff;
+  }
+
+
+  /* Scrollable Content */
+  .scrollable-content {
+    overflow-y: auto;
+    max-height: calc(100vh - 170px);
+    width: auto;
+    margin-top: 20px;
+  }
+
+  .header {
+    background-image: linear-gradient(to right, #ffffff, #00e1ff);
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .header h1 {
+    margin: 0;
+    color: #fff;
   }
 
 </style>
 </head>
-<body> 
-  <div class="background-image"></div>
-  <div class="container">
+<body>
+  <div class="background-image background-1"></div>
+  <div class="header">
+    <h1>Dịch vụ</h1>
+  </div>
+  <div class="content-container">
     <button class="tab-button" onclick="toggleTab()">
       <i class="fas fa-bars"></i>
-    </button>    
-    <div class="tab-content">
+    </button>
+      <div class="tab-content">
       <span class="tab-close" onclick="toggleTab()">X</span>
-      <a href="#" class="color-tab">Trang chủ</a>
+      <a href="https://hhnios.site/">Trang chủ</a>
       <a href="https://repo.hhnios.site/">Repo Jailbreak</a>
-      <a href="https://hhnios.site/dv/">Dịch vụ</a>
+      <a href="#" class="color-tab">Dịch vụ</a>
       <a href="https://hhnios.site/project/">Dự án Theos</a>
     </div>
 
-    <div class="texth2">
-      <h2>Konnichiwa!</h2>
+    <div class="scrollable-content">
+      <div class="text-content">
+        <h3>File Key Framework</h3>
+        <p>
+          Dùng để tiêm vào ipa, hỗ trợ không cần Jailbreak, dùng server key của <a href="https://v3.baontq.xyz" class="text">baontq</a>.
+        </p>
+        <p>Giá: 100.000VND</p>
+        <a href="https://www.facebook.com/weansios" class="main-button">Liên hệ Facebook</a>
+      </div>
+      <!-- Add more content here as needed -->
+      <div class="text-content">
+        <h3>File Key Framework</h3>
+        <p>
+          Dùng để tiêm vào ipa, hỗ trợ không cần Jailbreak, dùng server key của <a href="https://v3.baontq.xyz" class="text">baontq</a>.
+        </p>
+        <p>Giá: 100.000VND</p>
+        <a href="https://www.facebook.com/weansios" class="main-button">Liên hệ Facebook</a>
+      </div>
+      <!-- Add more content here as needed -->
+      <div class="text-content">
+        <h3>File Key Framework</h3>
+        <p>
+          Dùng để tiêm vào ipa, hỗ trợ không cần Jailbreak, dùng server key của <a href="https://v3.baontq.xyz" class="text">baontq</a>.
+        </p>
+        <p>Giá: 100.000VND</p>
+        <a href="https://www.facebook.com/weansios" class="main-button">Liên hệ Facebook</a>
+      </div>
+      <!-- Add more content here as needed -->
+      <!-- Add more content here as needed -->
+      <div class="text-content">
+        <h3>File Key Framework</h3>
+        <p>
+          Dùng để tiêm vào ipa, hỗ trợ không cần Jailbreak, dùng server key của <a href="https://v3.baontq.xyz" class="text">baontq</a>.
+        </p>
+        <p>Giá: 100.000VND</p>
+        <a href="https://www.facebook.com/weansios" class="main-button">Liên hệ Facebook</a>
+      </div>
+      <!-- Add more content here as needed -->
     </div>
-    <div class="texth1hhnios">
-      <h1>HHN iOS</h1>
-    </div>
-    <div class="description">
-      Chào mừng bạn đến với Website của Ninh.
-    </div>
+  </div>
 
-    <div class="buttons-container">
-      <button class="button" id="changeBgButton">Thay Đổi Nền</button>
-    </div>
+  <script>
+    let currentBackground = 1;
 
-    <div class="icon-container">
-      <a href="https://www.facebook.com/weansios"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.youtube.com/@hhnios5013"><i class="fab fa-youtube"></i></a>
-      <a href="https://github.com/WeansHHN"><i class="fab fa-github"></i></a>
-      <a href="https://twitter.com/@hhnios_weans"><i class="fab fa-twitter"></i></a>
-      <a href="https://t.me/Weans_HHN"><i class="fab fa-telegram"></i></a>
-    </div><br>
+    function changeBackground() {
+      const background = document.querySelector('.background-image');
+      const content = document.querySelector('.content-container');
 
-    <audio id="customAudio" controls>
-      <source src="https://github.com/WeansHHN/weanshhn.github.io/raw/main/Suzume.mp3" type="audio/mpeg">
-      Trình duyệt của bạn không hỗ trợ phần tử audio.
-    </audio>
+      currentBackground = (currentBackground === 1) ? 2 : 1;
 
-    <script>
-      const backgroundImages = [
-        'url("https://github.com/WeansHHN/new/blob/main/tomo-chan.jpg?raw=true")', // Add your image URLs here
-        'url("https://github.com/WeansHHN/new/blob/main/aotaot.jpg?raw=true")',
-        'url("https://raw.githubusercontent.com/WeansHHN/MDCRepo/main/portada_kamisama-ni-natta-hi-19.jpg")'
-      ];
+      background.classList.remove('background-1', 'background-2');
+      background.classList.add(`background-${currentBackground}`);
+    }
 
-      let currentBgIndex = 0;
-      const changeBgButton = document.getElementById("changeBgButton");
-
-      changeBgButton.addEventListener("click", () => {
-        currentBgIndex = (currentBgIndex + 1) % backgroundImages.length;
-        const backgroundImage = document.querySelector(".background-image");
-        backgroundImage.style.backgroundImage = backgroundImages[currentBgIndex];
-      });
-
-
-      function toggleTab() {
+    function toggleTab() {
       const tabContent = document.querySelector('.tab-content');
       tabContent.classList.toggle('open');
     }
-
-      const audioPlayer = document.getElementById("customAudio");
-  
-      function playMusic() {
-        audioPlayer.play();
-      }
-  
-      window.onload = playMusic;
-  
-    </script>
+  </script>
 </body>
 </html>
