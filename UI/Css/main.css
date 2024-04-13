@@ -1,0 +1,446 @@
+@font-face {
+    font-family: 'Font';
+    src: url('../SFUI.woff') format('truetype');
+}
+
+body {
+    font-family: 'Font', sans-serif;
+    top: 0;
+    margin: 0;
+    background-color: #000000;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    background-color: #3f3f3f;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-logo p {
+    font-size: 3vh;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.header-item {
+    background-color: rgb(173, 166, 166);
+    padding: 9px 12.5px;
+    border-radius: 12px;
+}
+
+.header-image {
+    position: relative;
+    top: 70px;
+    transform: scale(1);
+    max-height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-bottom: 13vh;
+    backdrop-filter: blur(2px);
+
+}
+
+
+.header-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px; /* Thiết lập giá trị bán kính bo góc */
+}
+
+.header-title {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(2px);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-title-main {
+    text-align: center;
+}
+
+.header-title-main h2 {
+    font-size: 70px;
+    color: rgb(235, 228, 228);
+    text-shadow: 0 5px #0f0f0f;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.header-title-main p {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 2px #0f0f0f;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.body-image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.body-image img {
+    width: 80%;
+}
+
+.body-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.body-info {
+    background-color: rgb(142, 185, 171);
+    padding: 0px;
+    border-radius: 20px;
+    margin: 0 20px;
+}
+
+.body-release h1 {
+    margin: 0;
+}
+
+.body-info p {
+    margin: 0;
+}
+
+.body-release {
+    background-color: rgb(142, 185, 171);
+    padding: 25px;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.button-release {
+    background-color: aqua;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 10px;
+    border-radius: 50px;
+    padding: 10px;
+    border: none;
+}
+
+.button-release:hover {
+    background-color: rgb(89, 95, 95);
+}
+
+.button-release a {
+    text-decoration: none;
+}
+
+.body-release h1 {
+    margin: 0;
+}
+
+.body-release p {
+    margin: 0;
+}
+
+.body-credit {
+    background-color: rgb(142, 185, 171);
+    padding: 25px;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.body-credit h1 {
+    margin: 0;
+}
+
+.body-credit p {
+    margin: 0;
+}
+
+.download-header h1 {
+    color: #fff;
+    margin: 0 20px;
+}
+
+.body-download {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.download-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 10px;
+}
+
+.download-ipa button {
+    border: none;
+    background-color: rgb(135, 222, 218);
+    padding: 10px 40px;
+    border-radius: 20px;
+}
+
+.download-ipa button p {
+    margin: 0;
+    font-weight: 600;
+}
+
+.download-ipa button a {
+    text-decoration: none;
+}
+
+.download-trollstore button {
+    border: none;
+    background-color: rgb(135, 222, 218);
+    padding: 10px 40px;
+    border-radius: 20px;
+}
+
+.download-trollstore button p {
+    margin: 0;
+    font-weight: 600;
+}
+
+.download-trollstore button a {
+    text-decoration: none;
+}
+
+.footer-container {
+    color: #ffffff93;
+    text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+    .header-title-main h2 {
+        font-size: 40px;
+    }
+    .header-title-main p {
+        font-size: 17px;
+    }
+    .body-credit h1 {
+        margin: 0;
+        font-size: 20px;
+    }
+    .body-credit p {
+        margin: 0;
+        font-size: 14px;
+    }
+    .body-release h1 {
+        margin: 0;
+        font-size: 20px;
+    }
+    .body-release p {
+        margin: 0;
+        font-size: 14px;
+    }
+    .body-info h1 {
+        margin: 0;
+        font-size: 20px;
+    }
+    .body-info p {
+        margin: 0;
+        font-size: 14px;
+    }
+}
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  z-index: 1;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+.align {
+text-align:center;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-container a {
+    margin: 0 10px; /* Khoảng cách giữa các biểu tượng */
+    text-decoration: none; /* Xóa gạch chân trên liên kết */
+    color: #333; /* Màu của biểu tượng */
+    font-size: 24px; /* Kích thước của biểu tượng */
+}
+
+.icon-container a:hover {
+    color: #00000086; /* Màu khi rê chuột vào biểu tượng */
+}
+
+
+/* Tuyet roi */
+@-webkit-keyframes snowflakes-fall {
+    0% {top:-10%}
+    100% {top:100%}
+  }
+  @-webkit-keyframes snowflakes-shake {
+    0%,100% {-webkit-transform:translateX(0);transform:translateX(0)}
+    50% {-webkit-transform:translateX(80px);transform:translateX(80px)}
+  }
+  @keyframes snowflakes-fall {
+    0% {top:-10%}
+    100% {top:100%}
+  }
+  @keyframes snowflakes-shake {
+    0%,100%{ transform:translateX(0)}
+    50% {transform:translateX(80px)}
+  }
+  .snowflake {
+    color: #fff;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    text-shadow: 0 0 5px #000;
+    position:fixed;
+    top:-10%;
+    z-index:9999;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    cursor:default;
+    -webkit-animation-name:snowflakes-fall,snowflakes-shake;
+    -webkit-animation-duration:10s,3s;
+    -webkit-animation-timing-function:linear,ease-in-out;
+    -webkit-animation-iteration-count:infinite,infinite;
+    -webkit-animation-play-state:running,running;
+    animation-name:snowflakes-fall,snowflakes-shake;
+    animation-duration:10s,3s;
+    animation-timing-function:linear,ease-in-out;
+    animation-iteration-count:infinite,infinite;
+    animation-play-state:running,running;
+  }
+  .snowflake:nth-of-type(0){
+    left:1%;-webkit-animation-delay:0s,0s;animation-delay:0s,0s
+  }
+  .snowflake:nth-of-type(1){
+    left:10%;-webkit-animation-delay:1s,1s;animation-delay:1s,1s
+  }
+  .snowflake:nth-of-type(2){
+    left:20%;-webkit-animation-delay:6s,.5s;animation-delay:6s,.5s
+  }
+  .snowflake:nth-of-type(3){
+    left:30%;-webkit-animation-delay:4s,2s;animation-delay:4s,2s
+  }
+  .snowflake:nth-of-type(4){
+    left:40%;-webkit-animation-delay:2s,2s;animation-delay:2s,2s
+  }
+  .snowflake:nth-of-type(5){
+    left:50%;-webkit-animation-delay:8s,3s;animation-delay:8s,3s
+  }
+  .snowflake:nth-of-type(6){
+    left:60%;-webkit-animation-delay:6s,2s;animation-delay:6s,2s
+  }
+  .snowflake:nth-of-type(7){
+    left:70%;-webkit-animation-delay:2.5s,1s;animation-delay:2.5s,1s
+  }
+  .snowflake:nth-of-type(8){
+    left:80%;-webkit-animation-delay:1s,0s;animation-delay:1s,0s
+  }
+  .snowflake:nth-of-type(9){
+    left:90%;-webkit-animation-delay:3s,1.5s;animation-delay:3s,1.5s
+  }
+  .snowflake:nth-of-type(10){
+    left:25%;-webkit-animation-delay:2s,0s;animation-delay:2s,0s
+  }
+  .snowflake:nth-of-type(11){
+    left:65%;-webkit-animation-delay:4s,2.5s;animation-delay:4s,2.5s
+  }

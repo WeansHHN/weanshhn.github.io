@@ -1,320 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Kamisama Ni Natta Hi Fan Page</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
-  /* Fix keo len, keo xuong */
-  html,
-  body {
-    overflow: auto;
-    height: 100%;
-  }
-/* Fix keo len, keo xuong */
-
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /*min-height: 50vh;*/
-    min-height: 100vh;
-    transition: background-color 0.5s;
-  }
-
-  .container {
-    text-align: center;
-    color: #fff;
-    padding: 20px;
-    max-width: 95%;
-    box-sizing: border-box;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-  }
-
-  .texth2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #ff6b6b;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-
-  .texth1hhnios {
-    font-size: 35px;
-    margin-bottom: -25px;
-    color: #ff6b6b;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.404);
-  }
-
-  .description {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: #ccc;
-    line-height: 1.5;
-  }
-
-  .buttons-container {
-    margin-top: 20px;
-  }
-
-  .button {
-    background-color: #ff6b6b;
-    border: none;
-    padding: 8px 16px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-  }
-
-  .button:hover {
-    background-color: #e85555;
-  }
-
-  .icon-container {
-    margin-top: 20px;
-  }
-
-  .icon-container a {
-    display: inline-block;
-    margin: 0 10px;
-    color: #ff6b6b;
-    text-decoration: none;
-    font-size: 24px;
-    transition: color 0.3s ease;
-  }
-
-  .icon-container a:hover {
-    color: #e85555;
-  }
-
-  /* Thêm phần mới cho phong cách anime */
-  .background-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://images5.alphacoders.com/131/1311994.jpeg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: -1;
-    opacity: 0.8;
-  }        
-
-  .container {
-    background-color: rgba(0, 0, 0, 0.514);
-    border-radius: 10px;
-    padding: 40px;
-    box-shadow: 0px 0px 10px rgb(0, 0, 0);
-    position: relative; /* Thêm dòng này để cho position: absolute; hoạt động */
-  }
-
-  
-
-  .description {
-    font-size: 20px;
-    margin-bottom: 30px;
-    color: #ccc;
-    line-height: 1.6;
-  }
-
-  .button {
-    background-color: #ff6b6b;
-    color: white;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .button:hover {
-    background-color: #e85555;
-  }
-
-  .icon-container a {
-    color: #ff6b6b;
-    font-size: 28px;
-    margin: 0 15px;
-    transition: color 0.3s ease;
-  }
-
-  .icon-container a:hover {
-    color: #e85555;
-  }
-
-  .tab-button {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #ff6b6bb4;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-    z-index: 1;
-  }
-
-  .tab-button:hover {
-    opacity: 1;
-  }
-
-  .tab-content {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: scale(0);
-    transition: transform 0.3s ease;
-    z-index: 2;
-  }
-
-  .tab-content.open {
-    transform: scale(1);
-  }
-
-  .tab-content a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    margin-bottom: 20px;
-    font-size: 16px;
-  }
-
-  .tab-close {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-  }
-
-  /* Thêm phần này để tab-content không che phủ nút tab-button */
-  .tab-button:focus + .tab-content {
-    transform: scale(1);
-  }
-
-
-  #customAudio {
-    width: 100%; /* Điều chỉnh kích thước theo ý muốn */
-    max-width: 500px; /* Kích thước tối đa */
-  }
-
-  .background-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: -1;
-    opacity: 0.8;
-    transition: opacity 0.5s ease;
-  }
-
-  .color-tab {
-    background-color: #ff6b6b;
-  }
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="og:image" content="https://raw.githubusercontent.com/WeansHHN/hackstore/main/img/header-img.gif">
+    <link rel="icon" href="https://raw.githubusercontent.com/WeansHHN/hackstore/main/img/HackStore.png">
+    <title>HHN iOS (Weans)</title>
+    <link rel="stylesheet" href="UI/Css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body> 
-  <div class="background-image"></div>
-  <div class="container">
-    <button class="tab-button" onclick="toggleTab()">
-      <i class="fas fa-bars"></i>
-    </button>    
-    <div class="tab-content">
-      <span class="tab-close" onclick="toggleTab()">X</span>
-      <a href="#" class="color-tab">Trang chủ</a>
-      <a href="https://repo.hhnios.site/">Repo Jailbreak</a>
-      <a href="https://hhnios.site/dv/">Dịch vụ</a>
-      <a href="https://hhnios.site/project/">Dự án Theos</a>
-    </div>
 
-    <div class="texth2">
-      <h2>Konnichiwa!</h2>
-    </div>
-    <div class="texth1hhnios">
-      <h1>HHN iOS</h1>
-    </div>
-    <div class="description">
-      Chào mừng bạn đến với Website của Ninh.
-    </div>
+<body>
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake"><img src="/img/gif/gifwaifu.gif" alt="weanshhn" width="40" height="40"/></div>
+        <div class="snowflake"><img src="/img/gif/gifwaifu.gif" alt="weanshhn" width="25" height="25"/></div>
+        <div class="snowflake"><img src="/img/gif/gifwaifu.gif" alt="weanshhn" width="25" height="25"/></div>
+        <div class="snowflake"><img src="/img/gif/gifwaifu.gif" alt="weanshhn" width="40" height="40"/></div>
+        <div class="snowflake"><img src="/img/gif/gifwaifu.gif" alt="weanshhn" width="25" height="25"/></div>
+        <div class="snowflake"><img src="/img/gif/gifwaifu.gif" alt="weanshhn" width="25" height="25"/></div>
+        <div class="snowflake"><img src="/img/gif/gifwaifu.gif" alt="weanshhn" width="25" height="25"/></div>
+        <div class="snowflake"><img src="/img/gif/gifwaifu.gif" alt="weanshhn" width="25" height="25"/></div>
+      </div>
+    <div>
+        <header>
+            <div class="header-container">
+                <div class="header-logo">
+                    <p>HHN iOS <img src="/img/gif/gifwaifu.gif" alt="weanshhn" width="25" height="25"/></p>
+                </div>
+                <div class="header-item">
+                    <!-- Link Github -->
+                    <a href="https://github.com/WeansHHN" class="header-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="30" width="26"
+                            viewBox="0 0 496 450">
+                            <path
+                                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </header>
+<br>
+        <div class="header-image">
+            <div class="slideshow-container">
+                <!-- Full-width images with number and caption text -->
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 2</div>
+                    <img src="img/gif/MikasaAkerman.gif" style="width:100%">
+                    <div class="header-title">
+                        <div class="header-title-main">
+                            <h2>HHN iOS</h2>
+                            <p>Chào mừng bạn đến với Website của Ninh.</p>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="buttons-container">
-      <button class="button" id="changeBgButton">Thay Đổi Nền</button>
+                <div class="mySlides fade">
+                    <div class="numbertext">2 / 2</div>
+                    <img src="img/gif/YosugaNoSora.gif" style="width:100%">
+                    <div class="header-title">
+                        <div class="header-title-main">
+                            <h2>Weans</h2>
+                            <p>Một kho lưu trữ dành cho iPhone và iPad đã jailbreak.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <br>
+
+            <!-- The dots/circles -->
+            <div class="align">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+            </div>
+        </div>
+
+        <div class="body-container">
+            <div class="body-header">
+                <div class="body-image">
+                    <img src="img/iPhone.png" alt="">
+                </div>
+                <div>
+                    <div class="body-info">
+                        <div class="body-release">
+                            <h1>Về tôi:</h1>
+                            <li><b>Tên là:</b> Hoàng Ngọc Hải Ninh<br></li>
+                            <li><b>Giải thích qua về tên khác của mình:</b><br> HHNiOS là tên mà mn gọi mình trên mạng,<br> đấy là tên viết tắt của mình khi bỏ chữ<br> "Ngọc" trong họ tên của mình. Còn WEANS<br> là lấy từ tên của 1 ca sĩ nhạc rap <a href="https://www.youtube.com/@Weantodale">WEAN</a>.<br><br></li>
+                            <b><a href="https://hhnios.site/me">Xem thêm về tôi ở đây</a></b>
+                        </div>
+                    </div>
+
+                    <div class="body-release">
+                        <h1>Repo Jailbreak:</h1>
+                        <button class="button-release">
+                            <a href="https://repo.hhnios.site">Repo Jailbreak</a>
+                        </button>
+                        <button class="button-release">
+                            <a href="https://hackstore.hhnios.site">HackStore iPA</a>
+                        </button>
+                    </div>
+
+                    <div class="body-credit">
+                        <h1>Liên hệ tôi:</h1><br>
+                        <div class="icon-container">
+                            <a href="https://www.facebook.com/weansios"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.youtube.com/@hhnios5013"><i class="fab fa-youtube"></i></a>
+                            <a href="https://github.com/WeansHHN"><i class="fab fa-github"></i></a>
+                            <a href="https://twitter.com/@hhnios_weans"><i class="fab fa-twitter"></i></a>
+                            <a href="https://t.me/Weans_HHN"><i class="fab fa-telegram"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <footer>
+            <div class="footer-container">
+                <p>©Credit by Weans (Ninh)</p>
+            </div>
+        </footer>
+        <br>
     </div>
-
-    <div class="icon-container">
-      <a href="https://www.facebook.com/weansios"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.youtube.com/@hhnios5013"><i class="fab fa-youtube"></i></a>
-      <a href="https://github.com/WeansHHN"><i class="fab fa-github"></i></a>
-      <a href="https://twitter.com/@hhnios_weans"><i class="fab fa-twitter"></i></a>
-      <a href="https://t.me/Weans_HHN"><i class="fab fa-telegram"></i></a>
-    </div><br>
-
-    <audio id="customAudio" controls>
-      <source src="https://github.com/WeansHHN/weanshhn.github.io/raw/main/Suzume.mp3" type="audio/mpeg">
-      Trình duyệt của bạn không hỗ trợ phần tử audio.
-    </audio>
 
     <script>
-      const backgroundImages = [
-      'url("https://raw.githubusercontent.com/WeansHHN/weanshhn.github.io/main/img/tomo-chan.jpg")', // Add your image URLs here
-        'url("https://raw.githubusercontent.com/WeansHHN/weanshhn.github.io/main/img/aotaot.jpg")',
-        'url("https://github.com/WeansHHN/img/blob/main/wallpaperflare.com_wallpaper%20(1).jpg?raw=true")',
-        'url("https://raw.githubusercontent.com/WeansHHN/MDCRepo/main/portada_kamisama-ni-natta-hi-19.jpg")',
-        'url("https://images5.alphacoders.com/131/1311994.jpeg")'
-      ];
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
-      let currentBgIndex = 0;
-      const changeBgButton = document.getElementById("changeBgButton");
+        function autoSlides() {
+            plusSlides(1);
+        }
+        let slideInterval = setInterval(autoSlides, 17000);
+        function stopAutoSlides() {
+            clearInterval(slideInterval);
+        }
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
 
-      changeBgButton.addEventListener("click", () => {
-        currentBgIndex = (currentBgIndex + 1) % backgroundImages.length;
-        const backgroundImage = document.querySelector(".background-image");
-        backgroundImage.style.backgroundImage = backgroundImages[currentBgIndex];
-      });
-
-
-      function toggleTab() {
-      const tabContent = document.querySelector('.tab-content');
-      tabContent.classList.toggle('open');
-    }
-
-      const audioPlayer = document.getElementById("customAudio");
-  
-      function playMusic() {
-        audioPlayer.play();
-      }
-  
-      window.onload = playMusic;
-  
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
     </script>
 </body>
+
 </html>
