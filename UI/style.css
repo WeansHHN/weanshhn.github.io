@@ -175,3 +175,26 @@ footer {
 .about-list a:hover {
     color: #005fa3; /* Màu khi hover lên link */
 }
+
+.social-links {
+    margin-top: 1rem;
+  }
+  
+  .social-links a {
+    display: inline-flex;
+    align-items: center;
+    margin: 0.5rem 0;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+  }
+  
+  .social-links a i {
+    margin-right: 8px; /* Khoảng cách giữa icon và chữ */
+  }
+  
+  .social-links a:hover {
+    color: #5f5f5f; /* Màu khi hover */
+  }
+  
