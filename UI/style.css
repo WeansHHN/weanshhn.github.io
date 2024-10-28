@@ -79,14 +79,14 @@ section {
 }
 
 .avatar {
-    width: 150px;
-    height: 150px;
+    width: 170px;
+    height: 170px;
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Đổ bóng rõ nét hơn */
+    box-shadow: 0 4px 10px rgba(0, 0, 10, 5.0); /* Đổ bóng rõ nét hơn */
     object-fit: cover;
-    margin-top: 1rem;
-    transform: rotate(-5deg);
-    transition: transform 0.3s;
+    margin-top: 0.5rem;
+    transform: rotate(-9deg);
+    transition: transform 0.10s;
   }
 
 .avatar:hover {
@@ -178,23 +178,26 @@ footer {
 
 .social-links {
     margin-top: 1rem;
-  }
+    display: flex;
+    gap: 0.5rem; /* Khoảng cách giữa các icon */
+    justify-content: center; /* Canh giữa icon */
+}
   
-  .social-links a {
+.social-links a {
     display: inline-flex;
     align-items: center;
     margin: 0.5rem 0;
     color: #ffffff;
     text-decoration: none;
     font-size: 18px;
-    transition: color 0.3s;
-  }
+    transition: color 0.10s;
+}
   
-  .social-links a i {
+.social-links a i {
     margin-right: 8px; /* Khoảng cách giữa icon và chữ */
-  }
+}
   
-  .social-links a:hover {
+.social-links a:hover {
     color: #5f5f5f; /* Màu khi hover */
-  }
+}
   

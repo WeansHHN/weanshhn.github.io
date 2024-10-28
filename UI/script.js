@@ -1,37 +1,29 @@
-// Wait for the DOM to fully load
-document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scroll effect for navigation
-    document.querySelectorAll('header nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-  
-        // Check if the target element exists
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-  
-    // Scroll-triggered animation
-    window.addEventListener('scroll', () => {
-      document.querySelectorAll('.fade-in').forEach((section) => {
-        const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < window.innerHeight - 100) {
-          section.classList.add('show');
-        }
-      });
-    });
-  
-    // Submit form
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for your message!');
-        this.reset();
-      });
-    }
+
+const snowflakeContainer = document.getElementById('snowflakeContainer');
+
+// Tạo hiệu ứng hoa rơi với số lượng ít và ngẫu nhiên
+function createSnowflake() {
+  const snowflake = document.createElement('p');
+  snowflake.className = 'snowflake';
+  snowflake.textContent = '🌸';
+
+  // Vị trí và kích thước ngẫu nhiên
+  snowflake.style.left = Math.random() * 100 + 'vw';
+  snowflake.style.fontSize = 10 + Math.random() * 20 + 'px';
+
+  // Tốc độ và thời gian rơi
+  snowflake.style.animationDuration = 10 + Math.random() * 15 + 's';
+  snowflake.style.animationDelay = Math.random() * 5 + 's';
+  snowflakeContainer.appendChild(snowflake);
+
+  // Xóa hoa khi rơi xong để tạo lại hiệu ứng
+  snowflake.addEventListener('animationend', () => {
+    snowflakeContainer.removeChild(snowflake);
+    createSnowflake(); // Tạo lại hoa rơi
   });
-  
+}
+
+// Khởi tạo hiệu ứng với số lượng ít (5 hoa) để tạo cảm giác chill
+for (let i = 0; i < 10; i++) {
+  createSnowflake();
+}
