@@ -18,7 +18,7 @@ body {
 
 header {
     background: linear-gradient(135deg, rgba(158, 158, 158, 0.8), rgba(0, 0, 0, 0.8)), 
-                url('https://github.com/WeansHHN/weanshhn.github.io/blob/main/img/gif/YosugaNoSora.gif?raw=true') no-repeat center center / cover; /* Gradient và hình nền */
+                url('https://raw.githubusercontent.com/WeansHHN/weanshhn.github.io/refs/heads/main/img/gif/MikasaAkerman.gif') no-repeat center center / cover; /* Gradient và hình nền */
     color: #ffffff; /* Màu chữ trắng */
     text-align: center;
     border-radius: 0 0 20px 20px; /* Cong phần dưới của header */
