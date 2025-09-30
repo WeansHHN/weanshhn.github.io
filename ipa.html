@@ -17,6 +17,7 @@ body{
   background: linear-gradient(180deg,#071028 0%, #071422 100%);
   color:#e6eef6;
   padding:16px;
+  font-size:16px; /* tăng font mặc định */
 }
 header{
   display:flex;
@@ -30,7 +31,12 @@ header h1{
   letter-spacing:0.2px;
   font-weight:600;
 }
-
+header h1{
+  font-size:24px; /* lớn hơn trên mobile */
+}
+.hot-header h2{
+  font-size:18px; /* app hot dễ nhìn */
+}
 /* Thanh tìm kiếm + App Hot cùng dòng */
 .hot-header {
   display: flex;
@@ -51,22 +57,30 @@ header h1{
 .search input{
   background: rgba(255,255,255,0.06);
   border:none;
-  padding:8px 12px;
+  /* padding:8px 12px; */
   color:var(--muted);
   border-radius:12px;
-  width:180px;
+  /* width:180px; */
   backdrop-filter: blur(4px);
 }
-
+.search input{
+  width:220px;      /* rộng hơn trên mobile */
+  font-size:16px;
+  padding:10px 14px;
+}
 /* Strip app hot */
 .strip {
   display: flex;
-  gap: 12px;
+  /* gap: 12px; */
   overflow-x: auto;
-  padding: 12px 0;
+  /* padding: 12px 0; */
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   justify-content: flex-start; 
+}
+.strip{
+  padding:16px 0;
+  gap:16px;
 }
 .strip::-webkit-scrollbar{height:6px}
 .strip::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.2); border-radius:6px}
@@ -82,23 +96,27 @@ header h1{
   scroll-snap-align:center;
   background: rgba(255,255,255,0.02);
   border-radius:16px;
-  padding:12px;
+  /* padding:12px; */
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:8px;
+  /* gap:8px; */
   box-shadow: 0 8px 20px rgba(0,0,0,0.6);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   cursor:pointer;
   backdrop-filter: blur(6px);
+}
+.card{
+  padding:16px;
+  gap:10px;
 }
 .card:hover{
   transform: translateY(-4px);
   box-shadow: 0 14px 30px rgba(0,0,0,0.7);
 }
 .icon{
-  width:72px;
-  height:72px;
+  /* width:72px; */
+  /* height:72px; */
   border-radius:20px;
   background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
   display:flex;
@@ -106,13 +124,17 @@ header h1{
   justify-content:center;
   overflow:hidden;
 }
+.icon{
+  width:88px;
+  height:88px;
+}
 .icon img{width:100%; height:100%; object-fit:cover; display:block}
 .meta{
   width:100%;
   text-align:center;
 }
 .name {
-  font-size:14px;
+  /* font-size:14px; */
   font-weight:600;
   color:#f2f7fb;
   overflow:hidden;
@@ -122,23 +144,33 @@ header h1{
   -webkit-line-clamp: 1; 
   white-space: normal; 
 }
+.name{
+  font-size:16px;
+}
 .ver{
-  font-size:12px;
+  /* font-size:12px; */
   color:var(--muted);
   margin-top:2px;
+}
+.ver{
+  font-size:14px;
 }
 .btn-download{
   margin-top:6px;
   width:100%;
   border:0;
-  padding:8px;
+  /* padding:8px; */
   border-radius:12px;
   background:var(--accent);
   color:#fff;
   font-weight:700;
-  font-size:14px;
+  /* font-size:14px; */
   cursor:pointer;
   transition:transform 0.1s;
+}
+.btn-download{
+  padding:10px;
+  font-size:16px;
 }
 .btn-download:active{transform:scale(0.98)}
 
@@ -190,22 +222,42 @@ header h1{
   cursor:pointer;
 }
 @media (max-width:520px){
-  .hot-header {
-    flex-direction: column;      /* Chuyển từ row sang cột */
-    align-items: flex-start;     /* Căn trái */
+  body{padding:12px; font-size:16px;}
+  .hot-header{
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .hot-header .search {
-    order: 1;                    /* Thanh tìm kiếm đứng trước */
-    width: 100%;                 /* Chiếm toàn bộ chiều rộng */
-    margin-bottom: 8px;          /* Khoảng cách dưới */
+  .search{
+    width:100%;
+    margin-bottom:12px;
   }
-  .hot-header h2 {
-    order: 2;                    /* App Hot đứng sau */
-    margin-top: 0;               /* Xóa margin thừa */
+  .search input{
+    width:100%;
   }
-  .search input {
-    width: 92%;                 /* Ô tìm kiếm co lại vừa container */
+  .strip{
+    gap:12px;
+    padding:12px 0;
   }
+  .card{
+    padding:14px;
+    gap:8px;
+  }
+  .icon{
+    width:80px;
+    height:80px;
+  }
+  .name{font-size:15px;}
+  .ver{font-size:13px;}
+  .btn-download{font-size:15px; padding:10px;}
+  #app-modal .modal-content{
+    max-width:95%;  /* modal gần full width */
+    padding:16px;
+  }
+  #app-modal #modal-icon{width:90px;height:90px;}
+  #app-modal #modal-name{font-size:20px;}
+  #app-modal #modal-ver{font-size:15px;}
+  #app-modal #modal-desc{font-size:15px;}
+  #app-modal #modal-download{font-size:16px;padding:10px 16px;}
 }
 </style>
 </head>
