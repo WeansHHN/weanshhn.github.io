@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mini App Store</title>
+<style>
+:root{
+  --bg:#0f1720;
+  --card:#1a2230;
+  --muted:#93a3b8;
+  --accent:#ff3b30;
+}
+body{
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg,#071028 0%, #071422 100%);
+  color:#e6eef6;
+  padding:16px;
+}
+header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:16px;
+}
+header h1{
+  font-size:20px;
+  margin:0;
+  letter-spacing:0.2px;
+  font-weight:600;
+}
+
+/* Thanh tìm kiếm + App Hot cùng dòng */
+.hot-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.hot-header h2{
+  margin:0;
+  font-size:16px;
+  color:#f2f7fb;
+}
+.search{
+  flex-shrink:0;
+}
+.search input{
+  background: rgba(255,255,255,0.06);
+  border:none;
+  padding:8px 12px;
+  color:var(--muted);
+  border-radius:12px;
+  width:180px;
+  backdrop-filter: blur(4px);
+}
+
+/* Strip app hot */
+.strip {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 12px 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  justify-content: flex-start; 
+}
+.strip::-webkit-scrollbar{height:6px}
+.strip::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.2); border-radius:6px}
+
+/* Danh sách app */
+#list{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap:12px;
+  margin-top:20px;
+}
+.card{
+  scroll-snap-align:center;
+  background: rgba(255,255,255,0.02);
+  border-radius:16px;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor:pointer;
+  backdrop-filter: blur(6px);
+}
+.card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.7);
+}
+.icon{
+  width:72px;
+  height:72px;
+  border-radius:20px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.icon img{width:100%; height:100%; object-fit:cover; display:block}
+.meta{
+  width:100%;
+  text-align:center;
+}
+.name {
+  font-size:14px;
+  font-weight:600;
+  color:#f2f7fb;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1; 
+  white-space: normal; 
+}
+.ver{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:2px;
+}
+.btn-download{
+  margin-top:6px;
+  width:100%;
+  border:0;
+  padding:8px;
+  border-radius:12px;
+  background:var(--accent);
+  color:#fff;
+  font-weight:700;
+  font-size:14px;
+  cursor:pointer;
+  transition:transform 0.1s;
+}
+.btn-download:active{transform:scale(0.98)}
+
+/* Modal app */
+#app-modal{
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  justify-content:center;
+  align-items:flex-end;
+  z-index:9999;
+  overflow:auto;
+  padding-bottom:20px;
+}
+#app-modal.show{display:flex;}
+#app-modal .modal-content{
+  background: var(--card);
+  border-radius:20px 20px 0 0;
+  width:100%;
+  max-width:400px;
+  padding:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+  position:relative;
+}
+#app-modal #modal-close{
+  position:absolute; top:12px; right:12px;
+  background:transparent; border:none; color:#fff; font-size:24px; cursor:pointer;
+}
+#app-modal #modal-icon{
+  width:100px;height:100px;margin:0 auto 12px;border-radius:20px;overflow:hidden;background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:center;
+}
+#app-modal #modal-icon img{width:100%;height:100%;object-fit:cover;}
+#app-modal #modal-name{color:#fff;margin:6px 0;font-size:18px;text-align:center;}
+#app-modal #modal-ver{color:var(--muted);margin:2px;font-size:14px;text-align:center;}
+#app-modal #modal-desc{color:#cfd8e6;margin:12px 0;font-size:14px;line-height:1.4;text-align:center;}
+#app-modal #modal-download{
+  display:block;
+  margin:12px auto 0 auto;
+  padding:10px 20px;
+  border-radius:12px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  font-weight:700;
+  font-size:14px;
+  cursor:pointer;
+}
+@media (max-width:520px){
+  .hot-header {
+    flex-direction: column;      /* Chuyển từ row sang cột */
+    align-items: flex-start;     /* Căn trái */
+  }
+  .hot-header .search {
+    order: 1;                    /* Thanh tìm kiếm đứng trước */
+    width: 100%;                 /* Chiếm toàn bộ chiều rộng */
+    margin-bottom: 8px;          /* Khoảng cách dưới */
+  }
+  .hot-header h2 {
+    order: 2;                    /* App Hot đứng sau */
+    margin-top: 0;               /* Xóa margin thừa */
+  }
+  .search input {
+    width: 92%;                 /* Ô tìm kiếm co lại vừa container */
+  }
+}
+</style>
+</head>
+<body>
+
+<header> 
+  <h1>Mini App Store</h1>
+</header>
+
+<main>
+  <hr>
+  <!-- App Hot bên trái, tìm kiếm bên phải -->
+  <div class="hot-header">
+    <h2>App Hot</h2>
+    <div class="search"> 
+      <input id="q" placeholder="Tìm kiếm nhanh..." /> 
+    </div>
+  </div>
+
+  <div id="strip" class="strip" aria-live="polite"></div>
+  <div id="status-strip" style="margin-top:12px;color:var(--muted);font-size:13px"></div>
+
+  <h2 style="margin-top:20px;font-size:16px;color:#f2f7fb;">Danh sách app</h2>
+  <div id="list"></div>
+  <div id="status-list" style="margin-top:12px;color:var(--muted);font-size:13px"></div>
+</main>
+
+<!-- Modal app -->
+<div id="app-modal">
+  <div class="modal-content">
+    <button id="modal-close">×</button>
+    <div id="modal-icon"><img src="" alt=""></div>
+    <h3 id="modal-name"></h3>
+    <p id="modal-ver"></p>
+    <p id="modal-desc"></p>
+    <button id="modal-download">Tải về</button>
+  </div>
+</div>
+
+<script>
+const API_TOP = "https://raw.githubusercontent.com/WeansHHN/hackstore/refs/heads/main/apiJS/game.json";
+const API_BOTTOM = "http://raw.githubusercontent.com/WeansHHN/hackstore/refs/heads/main/apiJS/app.json";
+const PLACEHOLDER = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><rect width="100%" height="100%" rx="20" fill="#0b1220"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-size="36" fill="#8ea7c9" font-family="Arial"></text></svg>`
+);
+
+const strip = document.getElementById('strip');
+const list = document.getElementById('list');
+const statusStrip = document.getElementById('status-strip');
+const statusList = document.getElementById('status-list');
+const q = document.getElementById('q');
+
+const modal = document.getElementById('app-modal');
+const modalIcon = modal.querySelector('#modal-icon img');
+const modalName = modal.querySelector('#modal-name');
+const modalVer = modal.querySelector('#modal-ver');
+const modalDesc = modal.querySelector('#modal-desc');
+const modalDownload = modal.querySelector('#modal-download');
+const modalClose = modal.querySelector('#modal-close');
+
+modalClose.addEventListener('click',()=>modal.classList.remove('show'));
+modal.addEventListener('click', e=>{ if(e.target===modal) modal.classList.remove('show'); });
+
+q.addEventListener('input', () => {
+  const v = q.value.trim().toLowerCase();
+  document.querySelectorAll('.card').forEach(c => {
+    const name = c.dataset.name;
+    c.style.display = name.includes(v) ? '' : 'none';
+  });
+});
+
+async function loadAPI(url, container, status){
+  try{
+    status.textContent = 'Đang tải...';
+    const res = await fetch(url,{cache:"no-cache"});
+    if(!res.ok) throw new Error('Không tải JSON: ' + res.status);
+    const js = await res.json();
+    const apps = Array.isArray(js.apps)?js.apps:(Array.isArray(js)?js:[]);
+    if(!apps.length){
+      status.textContent = 'Không tìm thấy app.';
+      return;
+    }
+    container.innerHTML = '';
+    apps.forEach(app=>{
+      const icon = (app.iconURL && app.iconURL!=='NULL')?app.iconURL:PLACEHOLDER;
+      const name = app.name||'Unknown';
+      const ver = app.version||'';
+      const desc = app.description||'';
+      const dl = app.downloadURL||'#';
+      const c = createCard(icon,name,ver,desc,dl);
+      container.appendChild(c);
+    });
+    status.textContent = `${apps.length} app đã tải.`;
+  }catch(err){
+    console.error(err);
+    status.textContent = 'Lỗi: '+(err.message||err);
+  }
+}
+
+function createCard(icon,name,ver,desc,dl){
+  const c = document.createElement('div');
+  c.className='card';
+  c.dataset.name=name.toLowerCase();
+  if(desc) c.title=desc;
+  c.innerHTML=`
+    <div class="icon"><img loading="lazy" src="${icon}" alt="${escapeHtml(name)}" onerror="this.src='${PLACEHOLDER}'"></div>
+    <div class="meta">
+      <div class="name">${escapeHtml(name)}</div>
+      <div class="ver">${escapeHtml(ver)}</div>
+      <button class="btn-download">Tải</button>
+    </div>
+  `;
+  const btn=c.querySelector('.btn-download');
+  btn.addEventListener('click',(e)=>{e.stopPropagation();showModal(icon,name,ver,desc,dl);});
+  c.addEventListener('click',()=>showModal(icon,name,ver,desc,dl));
+  return c;
+}
+
+function showModal(icon,name,ver,desc,dl){
+  modal.classList.add('show');
+  modalIcon.src = icon;
+  modalName.textContent = name;
+  modalVer.textContent = ver;
+  modalDesc.textContent = desc;
+  modalDownload.onclick = ()=>window.open(dl,'_blank','noopener');
+}
+
+function escapeHtml(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+// Load APIs
+loadAPI(API_TOP, strip, statusStrip);
+loadAPI(API_BOTTOM, list, statusList);
+</script>
+
+</body>
+</html>
