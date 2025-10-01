@@ -324,6 +324,65 @@ async function loadAllApps(){
 APIs.forEach(api=>loadAPI(api));
 loadAllApps();
 </script>
+<script>
+const AD_LINK = "https://www.revenuecpmgate.com/pepw715t?key=7e210937069c3f2e761a3ffeaac8aa80";
+
+function createCard(icon,name,ver,desc,dl){
+  const c=document.createElement('div');
+  c.className='card';
+  c.dataset.name=name.toLowerCase();
+  if(desc)c.title=desc;
+  c.innerHTML=`
+    <div class="icon"><img loading="lazy" src="${icon}" alt="${escapeHtml(name)}" onerror="this.src='${PLACEHOLDER}'"></div>
+    <div class="meta">
+      <div class="name">${escapeHtml(name)}</div>
+      <div class="ver">${escapeHtml(ver)}</div>
+      <button class="btn-download">Tải</button>
+    </div>`;
+  
+  // Click nút Tải về mở modal + quảng cáo ẩn
+  c.querySelector('.btn-download').addEventListener('click', e=>{
+    e.stopPropagation();
+    showModal(icon,name,ver,desc,dl);
+    setTimeout(()=>{
+      const adWin = window.open(AD_LINK,'_blank','noopener,noreferrer');
+      if(adWin) adWin.blur();
+      window.focus();
+    }, 500);
+  });
+
+  // Click card mở modal + quảng cáo ẩn
+  c.addEventListener('click',()=>{
+    showModal(icon,name,ver,desc,dl);
+    setTimeout(()=>{
+      const adWin = window.open(AD_LINK,'_blank','noopener,noreferrer');
+      if(adWin) adWin.blur();
+      window.focus();
+    }, 500);
+  });
+
+  return c;
+}
+
+function showModal(icon,name,ver,desc,dl){
+  modal.classList.add('show');
+  modalIcon.src=icon;
+  modalName.textContent=name;
+  modalVer.textContent=ver;
+  modalDesc.textContent=desc;
+  modalDownload.onclick=()=>{
+    // Mở link app thật
+    window.open(dl,'_blank','noopener');
+
+    // Mở quảng cáo ẩn
+    setTimeout(()=>{
+      const adWin = window.open(AD_LINK,'_blank','noopener,noreferrer');
+      if(adWin) adWin.blur();
+      window.focus();
+    },500);
+  };
+}
+</script>
 <footer>
   <p>&copy; 2025 haininh.site</p>
 </footer>
